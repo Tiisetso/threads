@@ -6,7 +6,7 @@
 #    By: timurray <timurray@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/07 14:02:01 by timurray          #+#    #+#              #
-#    Updated: 2025/12/07 14:21:13 by timurray         ###   ########.fr        #
+#    Updated: 2025/12/07 14:31:21 by timurray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,13 @@ SFLAGS := -ggdb3 -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 THREADS := -pthread
 
-SOURCES := \
-src/philo.c 
-
+SRC_DIR := src
 OBJ_DIR := obj
-OBJECTS := $(SOURCES:%.c=$(OBJ_DIR)/%.o)
+
+SOURCES := \
+$(SRC_DIR)/philo.c
+
+OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 debug ?= 0
 ifeq (${debug}, 1)
@@ -39,10 +41,10 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJECTS) $(THREADS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-
+	
 clean:
 	rm -rf $(OBJ_DIR)
 
