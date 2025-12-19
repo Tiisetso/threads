@@ -6,7 +6,7 @@
 #    By: timurray <timurray@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/07 14:02:01 by timurray          #+#    #+#              #
-#    Updated: 2025/12/07 14:31:21 by timurray         ###   ########.fr        #
+#    Updated: 2025/12/18 18:58:54 by timurray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,18 @@ SFLAGS := -ggdb3 -fsanitize=address -fsanitize=leak -fsanitize=undefined
 THREADS := -pthread
 
 SRC_DIR := src
+UTL_DIR := $(SRC_DIR)/utils
 OBJ_DIR := obj
 
 SOURCES := \
 $(SRC_DIR)/philo.c
+
+UTILS := \
+$(UTL_DIR)/ft_atoi_check.c \
+$(UTL_DIR)/ft_isspace.c \
+$(UTL_DIR)/ft_isdigit.c
+
+SOURCES += ${UTILS}
 
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

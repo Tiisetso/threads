@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timurray <timurray@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/07 14:02:05 by timurray          #+#    #+#             */
-/*   Updated: 2025/12/18 19:33:03 by timurray         ###   ########.fr       */
+/*   Created: 2025/12/18 17:47:37 by timurray          #+#    #+#             */
+/*   Updated: 2025/12/18 17:47:49 by timurray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	set_table(char **av, t_table *table)
+int	ft_isspace(char c)
 {
-	// convert str to nums
-	if (!ft_atoi_check(av[1], &table->number_of_philosophers))
-		return (0);
-	return (1);
-}
-
-int	main(int ac, char **av)
-{
-	t_table table;
-
-	if ((ac < 5) || (ac > 6))
-		return (EXIT_FAILURE);
-	else
-	{
-		set_table(av, &table);
-		
-	}
-	printf("Hello philo\n");
-	return (EXIT_SUCCESS);
+	if ((c >= 9 && c <= 13) || (c == 32))
+		return (1);
+	return (0);
 }
